@@ -18,6 +18,6 @@ services:
       MYSQL_USER: "docker"
       MYSQL_PASS: "docker"
     volumes:
-      - /media/maurod/DATA2/proyectos/mysql-new:/var/lib/mysql
+      - ~/db/mysql-autodatee_core:/var/lib/mysql
     ports:
       - "3307:3306"
