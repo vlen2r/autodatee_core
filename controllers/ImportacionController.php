@@ -166,7 +166,9 @@ class ImportacionController extends Controller
                         '{$observaciones}'  => '"' . $i['observaciones'] . '"',
                         '{$email}'          => '"' . $i['email'] . '"',
                         '{$nombre}'         => '"' . $i['nombre'] . '"',
+                        '{$apellido}'       => '"' . $i['apellido'] . '"',
                         '{$telefono}'       => '"' . $i['telefono'] . '"',
+                        '{$celular}'        => '"' . $i['celular'] . '"',
                         '{$direccion}'      => '"' . $i['direccion'] . '"',
                         '{$auto}'           => '"' . $i['auto'] . '"',
                         '{$vendor}'         => '"' . $i['vendor'] . '"',
@@ -382,32 +384,44 @@ class ImportacionController extends Controller
                             //'unique' => true, //Will filter and import unique values only. can by applied for 1+ attributes
                         ],
                         [
-                            'attribute' => 'telefono',
+                            'attribute' => 'apellido',
                             'value' => function ($line) {
                                 return $line[2];
                             },
                         ],
                         [
-                            'attribute' => 'direccion',
+                            'attribute' => 'telefono',
                             'value' => function ($line) {
                                 return $line[3];
                             },
                         ],
                         [
-                            'attribute' => 'email',
+                            'attribute' => 'celular',
                             'value' => function ($line) {
                                 return $line[4];
                             },
                         ],
                         [
-                            'attribute' => 'auto',
+                            'attribute' => 'direccion',
                             'value' => function ($line) {
                                 return $line[5];
+                            },
+                        ],
+                        [
+                            'attribute' => 'email',
+                            'value' => function ($line) {
+                                return $line[6];
+                            },
+                        ],
+                        [
+                            'attribute' => 'auto',
+                            'value' => function ($line) {
+                                return $line[7];
                             },
                         ], [
                             'attribute' => 'observaciones',
                             'value' => function ($line) {
-                                return $line[6];
+                                return $line[8];
                             },
                         ], [
                             'attribute' => 'token',

@@ -39,7 +39,9 @@ $model->token = $token;
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
                     'nombre',
+                    'apellido',
                     'telefono',
+                    'celular',
                     'direccion',
                     'email',
                     'auto',

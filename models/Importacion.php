@@ -9,7 +9,9 @@ use Yii;
  *
  * @property int $id
  * @property string $nombre
+ * @property string $apellido
  * @property string $telefono
+ * @property string $celular
  * @property string $direccion
  * @property string $email
  * @property string $auto
@@ -37,7 +39,7 @@ class Importacion extends \yii\db\ActiveRecord
             [['nombre'], 'required'],
             [['importado'], 'integer'],
             [['fecha'], 'safe'],
-            [['nombre', 'telefono', 'direccion', 'email', 'auto', 'observaciones'], 'string', 'max' => 255],
+            [['nombre', 'apellido', 'telefono', 'celular', 'direccion', 'email', 'auto', 'observaciones'], 'string', 'max' => 255],
             [['token', 'vendor', 'id_asignado'], 'string', 'max' => 64],
         ];
     }
@@ -50,7 +52,9 @@ class Importacion extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nombre' => 'Nombre',
+            'apellido' => 'Apellido',
             'telefono' => 'Telefono',
+            'celular' => 'Celular',
             'direccion' => 'Direccion',
             'email' => 'Email',
             'auto' => 'Auto',

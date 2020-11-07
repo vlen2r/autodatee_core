@@ -18,7 +18,7 @@ class ImportacionSearch extends Importacion
     {
         return [
             [['id', 'importado'], 'integer'],
-            [['nombre', 'telefono', 'direccion', 'email', 'auto', 'observaciones', 'token'], 'safe'],
+            [['nombre', 'apellido', 'telefono', 'celular', 'direccion', 'email', 'auto', 'observaciones', 'token'], 'safe'],
         ];
     }
 
@@ -63,7 +63,9 @@ class ImportacionSearch extends Importacion
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
+            ->andFilterWhere(['like', 'apellido', $this->apellido])
             ->andFilterWhere(['like', 'telefono', $this->telefono])
+            ->andFilterWhere(['like', 'celular', $this->celular])
             ->andFilterWhere(['like', 'direccion', $this->direccion])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'auto', $this->auto])
