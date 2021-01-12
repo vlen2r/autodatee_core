@@ -8,7 +8,7 @@ return [
 //    'charset' => 'utf8',
 
 //ambiente desarrollo
-    'dsn' => 'mysql:host=mysql;dbname=autodatee',
+    'dsn' => 'mysql:host=mysql;dbname=siseserv_autodatee',
     'username' => 'docker',
     'password' => 'docker',
     'charset' => 'utf8',
