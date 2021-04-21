@@ -180,7 +180,7 @@ class ImportacionController extends Controller
                     $urlsirena = "getsirena.com";
                     $urlpilot = "pilotsolution.com.ar";
                     $urltecnom = "tecnomcrm.com";
-                    $urlsalesforce = ":9201";
+                    $urlsalesforce = "9201";
 
                     $headers = [];
                     
@@ -223,7 +223,6 @@ class ImportacionController extends Controller
                     }
 
                     //En caso que estemos en un cliente de Salesforce. REQUIERE USR y PASS 
-                    //Este if fue desarrollado por Deoliveira
                     //print_r('urlsalesforce: '.strpos($cliente['url'], $urlsalesforce).' ');
                     if ($cliente['user'] != '' && strpos($cliente['url'], $urlsalesforce)>=1) 
                     {
