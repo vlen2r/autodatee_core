@@ -231,7 +231,8 @@ class ImportacionController extends Controller
                         (
                             'Content-Type:application/json',
                             'dealer: YAC',
-                            'Authorization: Basic ' . base64_encode($cliente['user'] . ":" . $cliente['password']), // <---
+                            'username: ' . $cliente['user'],
+                            'password: ' . $cliente['password'],
                         );
                     }
                
@@ -245,6 +246,7 @@ class ImportacionController extends Controller
                         CURLOPT_TIMEOUT => 30,
                         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                         CURLOPT_CUSTOMREQUEST => "POST",
+                        CURLOPT_SSL_CIPHER_LIST => "DEFAULT@SECLEVEL=1",
                         CURLOPT_POSTFIELDS => strtr($cliente['json'], $vars),
                         CURLOPT_HTTPHEADER  => $headers,
                     ));
