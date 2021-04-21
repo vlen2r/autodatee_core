@@ -221,20 +221,21 @@ class ImportacionController extends Controller
                             'cache-control: no-cache',
                         );
                     }
-                    
-                    //En caso que estemos en un cliente de Salesforce.
+
+                    //En caso que estemos en un cliente de Salesforce. REQUIERE USR y PASS 
+                    //Este if fue desarrollado por Deoliveira
                     //print_r('urlsalesforce: '.strpos($cliente['url'], $urlsalesforce).' ');
-                    if(strpos($cliente['url'], $urlsalesforce)>=1)
+                    if ($cliente['user'] != '' && strpos($cliente['url'], $urlsalesforce)>=1) 
                     {
                         //print_r(' entro en urlsalesforce');
                         $headers = array
                         (
-                            'Content-Type: application/x-www-form-urlencoded',
-                            'cache-control: no-cache',
+                            'Content-Type:application/json',
+                            'Authorization: Basic ' . base64_encode($cliente['user'] . ":" . $cliente['password']), // <---
                             'dealer: YAC',
                         );
                     }
-                    
+               
                     
                     //print_r('  '.implode(" ",$headers).' '.strtr($cliente['json'], $vars));
                     curl_setopt_array($curl, array(
