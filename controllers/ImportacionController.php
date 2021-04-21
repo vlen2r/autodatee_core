@@ -180,6 +180,7 @@ class ImportacionController extends Controller
                     $urlsirena = "getsirena.com";
                     $urlpilot = "pilotsolution.com.ar";
                     $urltecnom = "tecnomcrm.com";
+                    $urlsalesforce = ":9201";
 
                     $headers = [];
                     
@@ -218,6 +219,19 @@ class ImportacionController extends Controller
                         (
                             'Content-Type: application/x-www-form-urlencoded',
                             'cache-control: no-cache',
+                        );
+                    }
+                    
+                    //En caso que estemos en un cliente de Salesforce.
+                    //print_r('urlsalesforce: '.strpos($cliente['url'], $urlsalesforce).' ');
+                    if(strpos($cliente['url'], $urlsalesforce)>=1)
+                    {
+                        //print_r(' entro en urlsalesforce');
+                        $headers = array
+                        (
+                            'Content-Type: application/x-www-form-urlencoded',
+                            'cache-control: no-cache',
+                            'dealer: YAC',
                         );
                     }
                     
