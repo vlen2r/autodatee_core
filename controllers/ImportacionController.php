@@ -226,17 +226,17 @@ class ImportacionController extends Controller
                     //print_r('urlsalesforce: '.strpos($cliente['url'], $urlsalesforce).' ');
                     if ($cliente['user'] != '' && strpos($cliente['url'], $urlsalesforce)>=1) 
                     {
-                        print_r(' entro en urlsalesforce');
+                        //print_r(' entro en urlsalesforce');
                         $headers = array
                         (
                             'Content-Type:application/json',
-                            'Authorization: Basic ' . base64_encode($cliente['user'] . ":" . $cliente['password']), // <---
                             'dealer: YAC',
+                            'Authorization: Basic ' . base64_encode($cliente['user'] . ":" . $cliente['password']), // <---
                         );
                     }
                
                     
-                    print_r('  '.implode(" ",$headers).' '.strtr($cliente['json'], $vars));
+                    //print_r('  '.implode(" ",$headers).' '.strtr($cliente['json'], $vars));
                     curl_setopt_array($curl, array(
                         CURLOPT_URL => $cliente['url'],
                         CURLOPT_RETURNTRANSFER => true,
