@@ -224,8 +224,8 @@ class ImportacionController extends Controller
 
                     //En caso que estemos en un cliente de Salesforce. REQUIERE USR y PASS 
                     //print_r('urlsalesforce: '.strpos($cliente['url'], $urlsalesforce).' ');
-                    //if ($cliente['user'] != '' && strpos($cliente['url'], $urlsalesforce)>=1) 
-                    //{
+                    if ($cliente['user'] != '' && strpos($cliente['url'], $urlsalesforce)>=1) 
+                    {
                         //print_r(' entro en urlsalesforce');
                         $headers = array
                         (
@@ -233,7 +233,7 @@ class ImportacionController extends Controller
                             'dealer: YAC',
                             'Authorization: Basic ' . base64_encode($cliente['user'] . ":" . $cliente['password']), // <---
                         );
-                    //}
+                    }
                
                     
                     //print_r('  '.implode(" ",$headers).' '.strtr($cliente['json'], $vars));
