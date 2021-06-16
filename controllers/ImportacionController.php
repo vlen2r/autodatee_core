@@ -265,11 +265,15 @@ class ImportacionController extends Controller
                     //print_r($response);
                     //print_r($parse_response);
                     //return $parse_response['success'];
-                    
-                    //Para el caso de Pilot  el error da success==falso y message=mensaje de error y data=mensaje de error
-                    //Para el caso de Tecnom el error da summary==false y message=mensaje de error???
-                    //Para el caso de Sirena el error da ???
 
+                    /**
+                     * TODO Detectar error en Sirena
+                     */
+
+                    /**
+                     * Detectando si hubo error en Pilot
+                     * success==falso y message=mensaje de error y data=mensaje de error
+                     */
 					$response_success_aux_a = true;
                     if(isset($parse_response['success']) && isset($parse_response['message']))
                     {
@@ -279,6 +283,10 @@ class ImportacionController extends Controller
 						}
 					}
 					
+                    /**
+                     * Detectando si hubo error en Tecnom
+                     * summary==false y message=mensaje de error???
+                     */
 					$response_success_aux_b = true;
                     if(isset($param_response['summary']) && isset($parse_response['message']))
                     {
@@ -288,13 +296,26 @@ class ImportacionController extends Controller
 						}				
 					}
                     
+                    /**
+                     * Detectando si hubo error en ?????
+                     */
                     $response_success_aux_c = true;
                     if(isset($curl_info['http_code']) && $curl_info['http_code']!=200)
                     {
                         $response_success_aux_c = false;
                     }
 
-                    if ($curl_err || $response_success_aux_a == false || $response_success_aux_b == false || $response_success_aux_c == false) 
+                    /**
+                     * Detectando si hubo error en Inconcert
+                     * Status=false, Description= mensaje de error y erro=repite error.
+                     */
+                    $response_success_aux_d = true;
+                    if (isset($curl_info['Status']) && $curl_info['Status']!='true')
+                    {
+                        $response_success_aux_d = false;
+                    }
+
+                    if ($curl_err || $response_success_aux_a == false || $response_success_aux_b == false || $response_success_aux_c == false || $response_success_aux_d == false) 
                     {
                         $error_ls = '';
                         
@@ -306,6 +327,19 @@ class ImportacionController extends Controller
                         if(isset($curl_info['http_code']) && $curl_info['http_code']!=200)
                         {
                             $error_ls .= $curl_info['http_code'].' ';
+                        }
+
+                        //Detectando el error para Inconcert.
+                        /*
+                        {
+                            "status": false,
+                            "description": "El número ingresado (05523456789) no es válido.",
+                            "error": "El número ingresado (05523456789) no es válido."
+                        }
+                        */
+                        if (isset($curl_info['error']) && isset($curl_info['description']))
+                        {
+                            $error_ls .= $curl_info['description'].' ';
                         }
 
                         if (isset($parse_response['message'])) 
@@ -356,6 +390,16 @@ class ImportacionController extends Controller
             $id = $response['data']['welcome_id'];
         }
 
+        /**
+         * {
+         * "status": true,
+         * "description": "OK",
+         * "data": {
+         *      "status": "new",
+         *      "contactId": "174784"
+         *      }
+         * }
+         */
         if (isset($response['data']['contactId'])) {
             $id = $response['data']['contactId'];
         }
