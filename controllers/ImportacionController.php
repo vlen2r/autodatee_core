@@ -271,7 +271,7 @@ class ImportacionController extends Controller
                      */
 
                     /**
-                     * Detectando si hubo error en Pilot
+                     * Detectando si hubo error en Pilot????
                      * success==falso y message=mensaje de error y data=mensaje de error
                      */
 					$response_success_aux_a = true;
@@ -284,7 +284,7 @@ class ImportacionController extends Controller
 					}
 					
                     /**
-                     * Detectando si hubo error en Tecnom
+                     * Detectando si hubo error en 
                      * summary==false y message=mensaje de error???
                      */
 					$response_success_aux_b = true;
@@ -297,7 +297,15 @@ class ImportacionController extends Controller
 					}
                     
                     /**
-                     * Detectando si hubo error en ?????
+                     * Detectando si hubo error en Tecnom?????
+                     * {
+                     * "Message" : "Ha ocurrido un error al validar la consulta" ,
+                     * "ModelState" : {
+                     *      "dto.prospect.id" : [
+                     *      "Ya existe una consulta con id: 116554387"
+                     *          ]
+                     *      }
+                     * }
                      */
                     $response_success_aux_c = true;
                     if(isset($curl_info['http_code']) && $curl_info['http_code']!=200)
@@ -306,7 +314,7 @@ class ImportacionController extends Controller
                     }
 
                     /**
-                     * Detectando si hubo error en Inconcert
+                     * Detectando si hubo error en Inconcert!
                      * Status=false, Description= mensaje de error y erro=repite error.
                      */
                     $response_success_aux_d = true;
@@ -381,16 +389,45 @@ class ImportacionController extends Controller
 
     private function parseaIdentificadorRespuesta($response)
     {
+        /**
+         * Tecnom
+         * {
+         * "id" : 388592
+         * }
+         */
         $id = null;
         if (isset($response['id'])) {
             $id = $response['id'];
         }
 
+        /**
+         * 
+         */
         if (isset($response['data']['welcome_id'])) {
             $id = $response['data']['welcome_id'];
         }
 
         /**
+         * Sirena
+         * ,
+         * "agent": {
+         *      "id": "5c6161a3d2f95d00041e0e10",
+         *      "firstName": "Discador",
+         *      "lastName": "Automático",
+         *      "phone": "+543541544292",
+         *      "email": "prueba@prueba.com.ar"
+         *     },
+         * "assigned": "2019-09-14T01:49:05.754Z",
+         * "agentId": "5c6161a3d2f95d00041e0e10",
+         * "interactions": []
+         * }
+         */
+        if (isset($response['agentId'])) {
+            $id = $response['agentId'];
+        }
+
+        /** 
+         * Inconcert
          * {
          * "status": true,
          * "description": "OK",
@@ -400,9 +437,16 @@ class ImportacionController extends Controller
          *      }
          * }
          */
-        print_r($response['data']['contactId']);       
-        if (isset($response['data']['contactId'])) {
-            $id = $response['data']['contactId'];
+        if (isset($response->data)) 
+        {
+            foreach($response as $i) 
+            {
+                $i = (array)$i;
+                if(isset($i['contactId']))
+                {
+                    $id = $i['contactId'];
+                }
+            }
         }
 
         return $id;
