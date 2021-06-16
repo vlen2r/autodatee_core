@@ -180,6 +180,7 @@ class ImportacionController extends Controller
                     $urlsirena = "getsirena.com";
                     $urlpilot = "pilotsolution.com.ar";
                     $urltecnom = "tecnomcrm.com";
+                    $urlinconcert = "inconcertcc.com";
                     $urlsalesforce = "9201";
 
                     $headers = [];
@@ -353,6 +354,10 @@ class ImportacionController extends Controller
 
         if (isset($response['data']['welcome_id'])) {
             $id = $response['data']['welcome_id'];
+        }
+
+        if (isset($response['data']['contactId'])) {
+            $id = $response['data']['contactId'];
         }
 
         return $id;
