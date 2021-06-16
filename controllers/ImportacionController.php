@@ -400,6 +400,7 @@ class ImportacionController extends Controller
          *      }
          * }
          */
+        print_r($parse_response);       
         if (isset($response['data']['contactId'])) {
             $id = $response['data']['contactId'];
         }
