@@ -271,7 +271,7 @@ class ImportacionController extends Controller
                     curl_close($curl);
 
                     $parse_response = json_decode($response, true);
-                    
+
                     $id = $this->parseaIdentificadorRespuesta($parse_response);
                     
                     //print_r('http_code: '.$curl_info['http_code']);
@@ -364,6 +364,7 @@ class ImportacionController extends Controller
                             $error_ls .= $curl_info['description'].' ';
                         }
 
+
                         if (isset($parse_response['message'])) 
                         {
                             $error_ls .= $parse_response['message'].' ';
@@ -372,11 +373,12 @@ class ImportacionController extends Controller
                                 $error_ls .= $parse_response['data'].' ';
                             }
                         } 
-                        else 
-                        {
-                            $error_ls .= $parse_response.' ';
-                        }
-
+                        /**
+                         * else 
+                        *{
+                        *    $error_ls .= $parse_response.' ';
+                        *}
+                        */
                         return $this->redirect(array('importacion/index', 'message' => 'No han importado correctamente los registros. ' . $error_ls));
                     } 
                     else 
