@@ -381,10 +381,7 @@ class ImportacionController extends Controller
                         *}
                         */
                             
-                        $file = fopen("archivo.txt", "w");
-                        fwrite($file, "Esto es una nueva linea de texto" . PHP_EOL);
-                        fwrite($file, "Otra más" . PHP_EOL);
-                        fclose($file);
+                        Yii::debug('Se pasó por el tratamiento de errores, desde el response.');
 
                         return $this->redirect(array('importacion/index', 'message' => 'No han importado correctamente los registros. ' . $error_ls));
                     } 
