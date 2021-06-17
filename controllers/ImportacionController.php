@@ -362,6 +362,7 @@ class ImportacionController extends Controller
                         if (isset($curl_info['error']) && isset($curl_info['description']))
                         {
                             $error_ls .= $curl_info['description'].' ';
+                            
                         }
 
 
@@ -379,6 +380,12 @@ class ImportacionController extends Controller
                         *    $error_ls .= $parse_response.' ';
                         *}
                         */
+                            
+                        $file = fopen("~/archivo.txt", "w");
+                        fwrite($file, "Esto es una nueva linea de texto" . PHP_EOL);
+                        fwrite($file, "Otra más" . PHP_EOL);
+                        fclose($file);
+
                         return $this->redirect(array('importacion/index', 'message' => 'No han importado correctamente los registros. ' . $error_ls));
                     } 
                     else 
