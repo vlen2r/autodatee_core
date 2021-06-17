@@ -180,8 +180,8 @@ class ImportacionController extends Controller
                     $urlsirena = "getsirena.com";
                     $urlpilot = "pilotsolution.com.ar";
                     $urltecnom = "tecnomcrm.com";
-                    $urlinconcert = "inconcertcc.com";
                     $urlsalesforce = "9201";
+                    $urlinconcert = "inconcertcc.com";
 
                     $headers = [];
                     
@@ -236,6 +236,19 @@ class ImportacionController extends Controller
                             'password: ' . $cliente['password'],
                         );
                     }
+
+                    //En caso que estemos en un cliente de Inconcert. Buscamos la parte constante de la pagina.
+                    //agregado por Batista
+                    //print_r('urlinconcert: '.strpos($cliente['url'], $urlinconcert).' ');
+                    if(strpos($cliente['url'], $urlinconcert)>=1) 
+                    {
+                        //print_r(' entro en urlsirena');
+                        $headers = array
+                        (
+                            'Content-Type: application/json',
+                            'cache-control: no-cache',
+                        );
+                    }
                
                     
                     //print_r('  '.implode(" ",$headers).' '.strtr($cliente['json'], $vars));
@@ -258,6 +271,7 @@ class ImportacionController extends Controller
                     curl_close($curl);
 
                     $parse_response = json_decode($response, true);
+                    
                     $id = $this->parseaIdentificadorRespuesta($parse_response);
                     
                     //print_r('http_code: '.$curl_info['http_code']);
