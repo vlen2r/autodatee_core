@@ -347,7 +347,7 @@ class ImportacionController extends Controller
                     if (isset($curl_info['Status']) && $curl_info['Status']!='true')
                     {
                         $response_success_aux_d = false;
-                        Yii::warning('Inconcert Status!=true')
+                        Yii::warning('Inconcert Status!=true');
                     }
 
                     if ($curl_err || $response_success_aux_a == false || $response_success_aux_b == false || $response_success_aux_c == false || $response_success_aux_d == false) 
