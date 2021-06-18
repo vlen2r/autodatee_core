@@ -374,8 +374,10 @@ class ImportacionController extends Controller
                         if (isset($curl_info['error']) && isset($curl_info['description']))
                         {
                             $error_ls .= $curl_info['description'].' ';
-                            Yii::error($curl_info['error']);
-                            Yii::error($curl_info['description']);
+                            Yii::warning('$curl_info[description]');
+                            Yii::warning($curl_info['description']);
+                            Yii::warning('$curl_info[error]');
+                            Yii::warning($curl_info['error']);
                         }
 
 
@@ -481,6 +483,8 @@ class ImportacionController extends Controller
                 if(isset($i['contactId']))
                 {
                     $id = $i['contactId'];
+                    Yii::warning('$i[contactId]');
+                    Yii::warning($id);
                 }
             }
         }
