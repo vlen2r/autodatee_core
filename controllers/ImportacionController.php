@@ -266,8 +266,8 @@ class ImportacionController extends Controller
                         CURLOPT_POSTFIELDS => strtr($cliente['json'], $vars),
                         CURLOPT_HTTPHEADER  => $headers,
                     ));
-                    Yii::warning('$curl');
-                    Yii::warning($curl);
+                    Yii::warning('strtr($cliente['json'], $vars)');
+                    Yii::warning(strtr($cliente['json'], $vars));
                     
                     $response = curl_exec($curl);
                     Yii::warning('$response');
