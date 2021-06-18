@@ -381,7 +381,10 @@ class ImportacionController extends Controller
                         *}
                         */
                             
-                        Yii::debug('Se pasó por el tratamiento de errores, desde el response.');
+                        Yii::debug('Se pasó degub desde tratamiento de errores.');
+                        Yii::info('Se pasa una info desde tratamiento de errores.');
+                        Yii::warning('Se pasa una warning desde tratamiento de errores.');
+                        Yii::error()('Se pasa una error desde tratamiento de errores.');
 
                         return $this->redirect(array('importacion/index', 'message' => 'No han importado correctamente los registros. ' . $error_ls));
                     } 
