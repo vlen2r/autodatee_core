@@ -242,12 +242,13 @@ class ImportacionController extends Controller
                     //print_r('urlinconcert: '.strpos($cliente['url'], $urlinconcert).' ');
                     if(strpos($cliente['url'], $urlinconcert)>=1) 
                     {
-                        //print_r(' entro en urlsirena');
+                        //print_r(' entro en urlinconcert');
                         $headers = array
                         (
                             'Content-Type: application/json',
                             'cache-control: no-cache',
                         );
+                        Yii::warning($headers);
                     }
                
                     
@@ -266,11 +267,19 @@ class ImportacionController extends Controller
                     ));
                     
                     $response = curl_exec($curl);
+                    Yii::warning('$response');
+                    Yii::warning($response);
                     $curl_err = curl_error($curl);
+                    Yii::warning('$curl_err');
+                    Yii::warning($curl_err);
                     $curl_info = curl_getinfo($curl);
+                    Yii::warning('$curl_info');
+                    Yii::warning($curl_info);
                     curl_close($curl);
 
                     $parse_response = json_decode($response, true);
+                    Yii::warning('$parse_response');
+                    Yii::warning($parse_response);
 
                     $id = $this->parseaIdentificadorRespuesta($parse_response);
                     
@@ -382,9 +391,10 @@ class ImportacionController extends Controller
                         *}
                         */
                             
-                        Yii::debug('Se pasó degub desde tratamiento de errores.');
-                        Yii::info('Se pasa una info desde tratamiento de errores.');
-                        Yii::warning('Se pasa una warning desde tratamiento de errores.');
+                        Yii::debug('Degub Batista');
+                        Yii::info('Info Batista');
+                        Yii::warning('Warning Batista');
+                        Yii::error('Error Batista');
 
                         return $this->redirect(array('importacion/index', 'message' => 'No han importado correctamente los registros. ' . $error_ls));
                     } 
