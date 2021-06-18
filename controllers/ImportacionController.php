@@ -477,6 +477,9 @@ class ImportacionController extends Controller
          *      }
          * }
          */
+        Yii::info('Inconcert Comprobando $response->data');
+        Yii::warning('$response->data');
+        Yii::warning($response->data);
         if (isset($response->data)) 
         {
             foreach($response->data as $i) 
