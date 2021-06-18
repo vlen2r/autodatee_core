@@ -347,6 +347,7 @@ class ImportacionController extends Controller
                     if (isset($curl_info['Status']) && $curl_info['Status']!='true')
                     {
                         $response_success_aux_d = false;
+                        Yii::warning('Inconcert Status!=true')
                     }
 
                     if ($curl_err || $response_success_aux_a == false || $response_success_aux_b == false || $response_success_aux_c == false || $response_success_aux_d == false) 
@@ -396,10 +397,11 @@ class ImportacionController extends Controller
                         *}
                         */
                             
-                        Yii::debug('Degub Batista');
-                        Yii::info('Info Batista');
-                        Yii::warning('Warning Batista');
-                        Yii::error('Error Batista');
+                        //Funciona solo warning y error.....
+                        //Yii::debug('Degub Batista');
+                        //Yii::info('Info Batista');
+                        //Yii::warning('Warning Batista');
+                        //Yii::error('Error Batista');
 
                         return $this->redirect(array('importacion/index', 'message' => 'No han importado correctamente los registros. ' . $error_ls));
                     } 
@@ -477,7 +479,7 @@ class ImportacionController extends Controller
          */
         if (isset($response->data)) 
         {
-            foreach($response as $i) 
+            foreach($response->data as $i) 
             {
                 $i = (array)$i;
                 if(isset($i['contactId']))
