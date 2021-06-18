@@ -248,6 +248,7 @@ class ImportacionController extends Controller
                             'Content-Type: application/json',
                             'cache-control: no-cache',
                         );
+                        Yii::warning('$headers inconcert');
                         Yii::warning($headers);
                     }
                
@@ -265,6 +266,8 @@ class ImportacionController extends Controller
                         CURLOPT_POSTFIELDS => strtr($cliente['json'], $vars),
                         CURLOPT_HTTPHEADER  => $headers,
                     ));
+                    Yii::warning('$curl');
+                    Yii::warning($curl);
                     
                     $response = curl_exec($curl);
                     Yii::warning('$response');
