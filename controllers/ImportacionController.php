@@ -478,20 +478,11 @@ class ImportacionController extends Controller
          * }
          */
         Yii::info('Inconcert Comprobando identificador de lead');
-        Yii::warning('$response[data][contactId]');
-        Yii::warning($response['data']['contactId']);
-        if (isset($response->data)) 
+        if (isset($response['data']['contactId'])) 
         {
-            foreach($response->data as $i) 
-            {
-                $i = (array)$i;
-                if(isset($i['contactId']))
-                {
-                    $id = $i['contactId'];
-                    Yii::warning('$i[contactId]');
-                    Yii::warning($id);
-                }
-            }
+           $id = $response['data']['contactId'];
+           Yii::warning('$response[data][contactId]');
+           Yii::warning($response['data']['contactId']);
         }
 
         return $id;
