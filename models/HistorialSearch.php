@@ -60,7 +60,7 @@ class HistorialSearch extends Historial
         $query->andFilterWhere([
             'id' => $this->id,
             'cliente_id' => $this->cliente_id,
-            'cliente' => $this->cliente,
+            'cliente' => $this->getCliente,
             'cantidad' => $this->cantidad,
             'fecha' => $this->fecha,
         ]);
