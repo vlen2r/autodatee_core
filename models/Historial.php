@@ -48,7 +48,7 @@ class Historial extends \yii\db\ActiveRecord
             'cantidad' => 'Cantidad',
             'fecha' => 'Fecha',
             //Add by Batista at 2021-07-26. Filter by a related camp
-            'clienteNombre' => Yii::t('app', 'Nombre de Cliente')
+            'clienteNombre' => Yii::t('app', 'Nombre de Cliente'),
             //End of add by Batista at 2021-07-26
         ];
     }

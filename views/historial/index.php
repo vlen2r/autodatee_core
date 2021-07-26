@@ -34,11 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
             //Fin del agregado Batista 2021-07-26
             /*['class' => 'yii\grid\ActionColumn'],*/
         ],
-        //[
-        //    'attribute' => 'cliente_id',
-        //    'value' => 'cliente.nombre',
-        //],
-        //Fin del agregado Batista 2021-07-26
     ]); ?>
 
 

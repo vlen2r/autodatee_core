@@ -15,8 +15,7 @@ class HistorialSearch extends Historial
     /**
      * Added by Batista 2021-07-26.
      * Filter by a camp of a related table.
-     */
-    /* attribute */
+     *//* attribute */
     public $clienteNombre;
     //end of the add by Batista 2021-07-26
 
@@ -36,7 +35,6 @@ class HistorialSearch extends Historial
         return [
             [['id', 'cliente_id', 'cantidad'], 'integer'],
             [['fecha'], 'safe'],
-            
         /**
          * Agregado por Batista 2021-07-26
          * Para filtrar mediante el nombre del cliente.
@@ -78,6 +76,15 @@ class HistorialSearch extends Historial
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
+
+            /**
+             * Agregado por Batista 2021-07-26
+             * Para filtrar mediante el nombre del cliente.
+             * Siendo cliente una tabla foranea de Historial.
+             */
+            $query->joinWith(['cliente']);
+            //End of the add by Batista 2021-07-26
+
             return $dataProvider;
         }
 
@@ -86,15 +93,12 @@ class HistorialSearch extends Historial
          * Para filtrar mediante el nombre del cliente.
          * Siendo cliente una tabla foranea de Historial.
          */
-        $query->joinWith(['cliente']);
-
         //$query->andFilterWhere(['like', 'cliente.nombre', $this->cliente.nombre]);
         
         // Another example of filtering
         $query->joinWith(['cliente' => function ($q) {
-                $q->where('nombre LIKE "%' . $this->clienteNombre . '%"');
+                $q->where('cliente.nombre LIKE "%' . $this->clienteNombre . '%"');
         }]);
-
         //End of the add by Batista 2021-07-26
 
         // grid filtering conditions
