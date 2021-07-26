@@ -25,7 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'cliente.nombre',
             'cantidad',
             'fecha',
-
             /*['class' => 'yii\grid\ActionColumn'],*/
         ],
         /**
@@ -33,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
          * Para filtrar mediante el nombre del cliente.
          * Siendo cliente una tabla foranea de Historial.
          */
+            'clienteNombre',
         //[
         //    'attribute' => 'cliente_id',
         //    'value' => 'cliente.nombre',
