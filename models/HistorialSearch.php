@@ -16,9 +16,25 @@ class HistorialSearch extends Historial
      */
     public function rules()
     {
+        
+        /**
+         * Agregado por Batista 2021-07-26
+         * Para filtrar mediante el nombre del cliente.
+         * Siendo cliente una tabla foranea de Historial.
+         */
+        parent::rules();
+        //Fin del agregado Batista 2021-07-26
         return [
             [['id', 'cliente_id', 'cantidad'], 'integer'],
-            [['fecha', 'cliente_id'], 'safe'],
+            [['fecha'], 'safe'],
+            
+        /**
+         * Agregado por Batista 2021-07-26
+         * Para filtrar mediante el nombre del cliente.
+         * Siendo cliente una tabla foranea de Historial.
+         */
+            [['cliente_id'], 'safe'],
+        //Fin del agregado Batista 2021-07-26
         ];
     }
 
@@ -61,8 +77,8 @@ class HistorialSearch extends Historial
          * Para filtrar mediante el nombre del cliente.
          * Siendo cliente una tabla foranea de Historial.
          */
-        $query->joinWith(['cliente(id)']);
-        $query->andFilterWhere(['like', 'cliente.nombre (cliente.nombre)', $this->cliente_id]);
+        //$query->joinWith(['cliente']);
+        $query->andFilterWhere(['like', 'cliente.nombre', $this->cliente.nombre]);
         //End of the add by Batista 2021-07-26
 
 
