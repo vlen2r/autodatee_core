@@ -45,16 +45,19 @@ class HistorialController extends Controller
         ]);
     }
 
-    public function actionImportado()
-    {
-        $dataProvider = new Importado();
-        /*$dataProvider = $searchModel->search(Yii::$app->request->queryParams);*/
+//Batista
+//I think it's mine. I tried to add code for filter by a camp of an foreign table.
+//    public function actionImportado()
+//    {
+//        $dataProvider = new Importado();
+//        /*$dataProvider = $searchModel->search(Yii::$app->request->queryParams);*/
+//
+//        return $this->render('index', [
+//            /*'searchModel' => $searchModel,*/
+//            'dataProvider' => $dataProvider,
+//        ]);
+//    }
 
-        return $this->render('index', [
-            /*'searchModel' => $searchModel,*/
-            'dataProvider' => $dataProvider,
-        ]);
-    }
 
     /**
      * Displays a single Historial model.

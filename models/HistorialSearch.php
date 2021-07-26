@@ -18,7 +18,7 @@ class HistorialSearch extends Historial
     {
         return [
             [['id', 'cliente_id', 'cantidad'], 'integer'],
-            [['fecha'], 'safe'],
+            [['fecha', 'cliente_id'], 'safe'],
         ];
     }
 
@@ -56,11 +56,20 @@ class HistorialSearch extends Historial
             return $dataProvider;
         }
 
+        /**
+         * Agregado por Batista 2021-07-26
+         * Para filtrar mediante el nombre del cliente.
+         * Siendo cliente una tabla foranea de Historial.
+         */
+        $query->joinWith(['cliente(id)']);
+        $query->andFilterWhere(['like', 'cliente.nombre (cliente.nombre)', $this->cliente_id]);
+        //End of the add by Batista 2021-07-26
+
+
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'cliente_id' => $this->cliente_id,
-            'cliente' => $this->getCliente,
             'cantidad' => $this->cantidad,
             'fecha' => $this->fecha,
         ]);

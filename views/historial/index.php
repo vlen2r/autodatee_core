@@ -28,6 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             /*['class' => 'yii\grid\ActionColumn'],*/
         ],
+        /**
+         * Agregado por Batista 2021-07-26
+         * Para filtrar mediante el nombre del cliente.
+         * Siendo cliente una tabla foranea de Historial.
+         */
+        [
+            'attribute' => 'cliente_id',
+            'value' => 'cliente.nombre',
+         ]
+        //Fin del agregado Batista 2021-07-26
     ]); ?>
 
 
