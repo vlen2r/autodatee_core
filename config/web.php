@@ -27,6 +27,7 @@ $config = [
         // message source
         // 'downloadAction' => 'gridview/export/download',
         // 'i18n' => []
+            ],
         ],
     
     //2021-07-27 - End of the add by Batista

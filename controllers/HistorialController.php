@@ -11,6 +11,13 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
+ * 2021-07-27 Added by Batista for Export in Excel.
+ * link: https://www.yiiframework.com/wiki/763/step-by-step-for-how-to-full-export-yii2-grid-to-excel
+ */
+use arturoliveira\ExcelView;
+//2021-07-27 - End of the add by Batista
+
+/**
  * HistorialController implements the CRUD actions for Historial model.
  */
 class HistorialController extends Controller
@@ -144,7 +151,6 @@ class HistorialController extends Controller
      * 2021-07-27 Added by Batista for Export in Excel.
      * link: https://www.yiiframework.com/wiki/763/step-by-step-for-how-to-full-export-yii2-grid-to-excel
      */
-    use arturoliveira\ExcelView;
     public function actionExport() 
     {
         $searchModel = new HistorialSearch();
