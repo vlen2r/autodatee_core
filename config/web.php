@@ -12,6 +12,26 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+
+
+    /**
+     * 2021-07-27 Added by Batista for Export in Excel.
+     * link: https://www.yiiframework.com/wiki/763/step-by-step-for-how-to-full-export-yii2-grid-to-excel
+     */
+    
+    'modules' => [//add by Scott
+        'gridview' => [
+            'class' => '\kartik\grid\Module'
+        // enter optional module parameters below - only if you need to  
+        // use your own export download action or custom translation 
+        // message source
+        // 'downloadAction' => 'gridview/export/download',
+        // 'i18n' => []
+        ],
+    
+    //2021-07-27 - End of the add by Batista
+
+
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
