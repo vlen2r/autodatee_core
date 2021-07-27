@@ -36,6 +36,16 @@ class HistorialController extends Controller
      */
     public function actionIndex()
     {
+        /**
+         * Agregado por Batista 2021-07-26
+         * Para filtrar mediante el nombre del cliente.
+         * Siendo cliente una tabla foranea de Historial.
+         */
+        $model=HistorialSearch::model()->findAll();
+        $content=$this->renderPartial("excel",array("model"=>$model),true);
+        Yii::app()->request->sendFile("CantidadCliente.xls",$content);
+        //Fin del agregado Batista 2021-07-26
+        
         $searchModel = new HistorialSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
