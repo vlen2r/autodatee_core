@@ -33,7 +33,23 @@ $this->params['breadcrumbs'][] = $this->title;
             'clienteNombre',
             //Fin del agregado Batista 2021-07-26
             /*['class' => 'yii\grid\ActionColumn'],*/
+
+            /**
+             * 2021-07-27. Agregado por Batista. Exportación excel.
+             */
+            'layout' => '{summary}<div class="pull-right">{export}&nbsp{fullexport}&nbsp</div><div>{items}</div>{pager}',
+            'exportConfig' => [
+                \kartik\grid\GridView::EXCEL => ['label' => 'Export to Excel'],
+                ],
+            'fullExportConfig' => [
+                ExcelView::FULL_EXCEL => [],
+                //ExcelView::FULL_CSV => ['label' => 'Save as CSV'],
+                ExcelView::FULL_HTML => [],
+                ],
+            //Fin del agregado Batista 2021-07-27
         ],
+
+
     ]); ?>
 
 
