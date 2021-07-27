@@ -139,4 +139,30 @@ class HistorialController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    /**
+     * 2021-07-27 Added by Batista for Export in Excel.
+     * link: https://www.yiiframework.com/wiki/763/step-by-step-for-how-to-full-export-yii2-grid-to-excel
+     */
+    use arturoliveira\ExcelView;
+    public function actionExport() 
+    {
+        $searchModel = new HistorialSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        ExcelView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'fullExportType'=> 'xlsx', //can change to html,xls,csv and so on
+            'grid_mode' => 'export',
+            'columns' => [
+                ['class' => 'yii\grid\SerialColumn'],
+                'clienteNombre',
+                'cantidad',
+                'fecha',
+              ],
+        ]);
+    }
+
+    //2021-07-27 - End of the add by Batista
+
 }
