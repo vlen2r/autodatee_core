@@ -17,12 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); 
     ?>
 
-    <?= $this->widget('EExcelView', array(
-        'dataProvider'=> $dataprovider,
-        'title'=>'Title',
-        'autoWidth'=>false,
-        ));?>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
