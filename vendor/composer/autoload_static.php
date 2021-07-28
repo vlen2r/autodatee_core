@@ -46,11 +46,18 @@ class ComposerStaticInitff46c668f52bcebfbfbfbd110dd23bed
         'k' => 
         array (
             'kartik\\select2\\' => 15,
+            'kartik\\grid\\' => 12,
+            'kartik\\dialog\\' => 14,
+            'kartik\\bs4dropdown\\' => 19,
             'kartik\\base\\' => 12,
         ),
         'c' => 
         array (
             'cebe\\markdown\\' => 14,
+        ),
+        'a' => 
+        array (
+            'arturoliveira\\' => 14,
         ),
         'W' => 
         array (
@@ -154,6 +161,18 @@ class ComposerStaticInitff46c668f52bcebfbfbfbd110dd23bed
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2/src',
         ),
+        'kartik\\grid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-grid/src',
+        ),
+        'kartik\\dialog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-dialog/src',
+        ),
+        'kartik\\bs4dropdown\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-bootstrap4-dropdown/src',
+        ),
         'kartik\\base\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-krajee-base/src',
@@ -161,6 +180,10 @@ class ComposerStaticInitff46c668f52bcebfbfbfbd110dd23bed
         'cebe\\markdown\\' => 
         array (
             0 => __DIR__ . '/..' . '/cebe/markdown',
+        ),
+        'arturoliveira\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/arturoliveira/yii2-excelview',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -286,6 +309,13 @@ class ComposerStaticInitff46c668f52bcebfbfbfbd110dd23bed
     );
 
     public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
+            ),
+        ),
         'H' => 
         array (
             'HTMLPurifier' => 
