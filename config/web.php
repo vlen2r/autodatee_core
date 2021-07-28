@@ -21,11 +21,12 @@ $config = [
     
     'modules' => [//add by Scott
         'gridview' => [
-            'class' => '\kartik\grid\Module'
+            'class' => '\kartik\grid\Module',
         // enter optional module parameters below - only if you need to  
         // use your own export download action or custom translation 
         // message source
         // 'downloadAction' => 'gridview/export/download',
+            'downloadAction' => 'export',  //change default download action to your own export action.
         // 'i18n' => []
             ],
         ],
