@@ -7,7 +7,7 @@ use yii\helpers\Html;
  * 2021-07-27 Added by Batista for Export in Excel.
  * link: https://www.yiiframework.com/wiki/763/step-by-step-for-how-to-full-export-yii2-grid-to-excel
  */
-use arturoliveira\ExcelView;
+//use arturoliveira\ExcelView;
 use kartik\grid\GridView;
 //2021-07-27 - End of the add by Batista
 
@@ -42,17 +42,28 @@ $this->params['breadcrumbs'][] = $this->title;
             //Fin del agregado Batista 2021-07-26
             /*['class' => 'yii\grid\ActionColumn'],*/
         ],
-        'layout' => '{summary}<div class="pull-right">{export}&nbsp{fullexport}&nbsp</div><div>{items}</div>{pager}',
+        //'layout' => '{summary}<div class="pull-right">{export}&nbsp{fullexport}&nbsp</div><div>{items}</div>{pager}',
+        'layout' => '{summary}<div class="pull-right">{export}&nbsp</div><div>{items}</div>{pager}',
         /*
         'exportConfig' => [
             \kartik\grid\GridView::EXCEL => ['label' => 'Export to Excel'],
         ],
+        */
+        /*
         'fullExportConfig' => [
             ExcelView::FULL_EXCEL => [],
             //ExcelView::FULL_CSV => ['label' => 'Save as CSV'],
             //ExcelView::FULL_HTML => [],
         ],
         */
+        'toolbar' =>  [
+            ['content'=>
+                Html::button('&lt;i class="glyphicon glyphicon-plus">&lt;/i>', ['type'=>'button', 'title'=>Yii::t('kvgrid', 'Add Book'), 'class'=>'btn btn-success', 'onclick'=>'alert("This will launch the book creation form.\n\nDisabled for this demo!");']) . ' '.
+                Html::a('&lt;i class="glyphicon glyphicon-repeat">&lt;/i>', ['grid-demo'], ['data-pjax'=>0, 'class' => 'btn btn-default', 'title'=>Yii::t('kvgrid', 'Reset Grid')])
+            ],
+            '{export}',
+            '{toggleData}'
+        ],
     ]); ?>
 
 
