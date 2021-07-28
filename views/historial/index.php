@@ -8,6 +8,7 @@ use yii\grid\GridView;
  * link: https://www.yiiframework.com/wiki/763/step-by-step-for-how-to-full-export-yii2-grid-to-excel
  */
 use arturoliveira\ExcelView;
+use kartik\grid\GridView;
 //2021-07-27 - End of the add by Batista
 
 /* @var $this yii\web\View */
