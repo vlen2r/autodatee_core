@@ -27,9 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
 
 <?= 
-
+/* Me tira el error 
     $gridColumns = [
-        ['class' => 'yii\grid\SerialColumn'],
+        ['class' => 'yii\grid\SerialColumn'],       Array to string conversion
         'id',
         'name',
         'color',
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'status',
         ['class' => 'yii\grid\ActionColumn'],
     ];
-
+*/
     ExportMenu::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
