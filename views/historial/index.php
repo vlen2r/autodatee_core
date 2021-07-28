@@ -30,29 +30,50 @@ $this->params['breadcrumbs'][] = $this->title;
 
     $gridColumns = [
         ['class' => 'yii\grid\SerialColumn'],
-        'cliente.nombre',
-        'cantidad',
-        'fecha',
-        /**
-         * Agregado por Batista 2021-07-26
-         * Para filtrar mediante el nombre del cliente.
-         * Siendo cliente una tabla foranea de Historial.
-         */
-        'clienteNombre',
-        //Fin del agregado Batista 2021-07-26
-        /*['class' => 'yii\grid\ActionColumn'],*/
+        'id',
+        'name',
+        'color',
+        'publish_date',
+        'status',
+        ['class' => 'yii\grid\ActionColumn'],
     ];
 
     ExportMenu::widget([
         'dataProvider' => $dataProvider,
-        'columns' => $gridColumns,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            'cliente.nombre',
+            'cantidad',
+            'fecha',
+            /**
+             * Agregado por Batista 2021-07-26
+             * Para filtrar mediante el nombre del cliente.
+             * Siendo cliente una tabla foranea de Historial.
+             */
+            'clienteNombre',
+            //Fin del agregado Batista 2021-07-26
+            /*['class' => 'yii\grid\ActionColumn'],*/
+        ],
         'clearBuffers' => true, //optional
     ]);
 
     GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => $gridColumns,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            'cliente.nombre',
+            'cantidad',
+            'fecha',
+            /**
+             * Agregado por Batista 2021-07-26
+             * Para filtrar mediante el nombre del cliente.
+             * Siendo cliente una tabla foranea de Historial.
+             */
+            'clienteNombre',
+            //Fin del agregado Batista 2021-07-26
+            /*['class' => 'yii\grid\ActionColumn'],*/
+        ],
     ]); ?>
 
 
