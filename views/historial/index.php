@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+//use yii\grid\GridView;
 
 /**
  * 2021-07-27 Added by Batista for Export in Excel.
@@ -43,6 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
             /*['class' => 'yii\grid\ActionColumn'],*/
         ],
         'layout' => '{summary}<div class="pull-right">{export}&nbsp{fullexport}&nbsp</div><div>{items}</div>{pager}',
+        /*
         'exportConfig' => [
             \kartik\grid\GridView::EXCEL => ['label' => 'Export to Excel'],
         ],
@@ -51,6 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //ExcelView::FULL_CSV => ['label' => 'Save as CSV'],
             //ExcelView::FULL_HTML => [],
         ],
+        */
     ]); ?>
 
 
