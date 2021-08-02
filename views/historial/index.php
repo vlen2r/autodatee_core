@@ -31,10 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
 /*
     $gridColumns = [
         ['class' => 'yii\grid\SerialColumn'],      // Array to string conversion
-        'cliente.nombre',
+        'clienteNombre',
+        //'cliente.nombre',
         'cantidad',
         'fecha',
-        'clienteNombre',
         //['class' => 'yii\grid\ActionColumn'],
     ];
 */
@@ -43,12 +43,11 @@ $this->params['breadcrumbs'][] = $this->title;
         //'columns' => $gridColumns,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'cliente.nombre',
-            'cantidad',
-            'fecha',
             //Agregado por Batista 2021-07-26. Para filtrar mediante el nombre del cliente. Siendo cliente una tabla foranea de Historial.
             'clienteNombre',
             //Fin del agregado Batista 2021-07-26
+            'cantidad',
+            'fecha',
             //['class' => 'yii\grid\ActionColumn'],
         ],
         'clearBuffers' => true, //optional
@@ -82,13 +81,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'cliente.nombre',
-            'cantidad',
-            'fecha',
             //Agregado por Batista 2021-07-26. Para filtrar mediante el nombre del cliente.
             //Siendo cliente una tabla foranea de Historial.
             'clienteNombre',
             //Fin del agregado Batista 2021-07-26
+            'cantidad',
+            'fecha',
             //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); 
