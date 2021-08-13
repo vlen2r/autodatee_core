@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'fecha',
             'importado',
             'id_asignado',
-            /*['class' => 'yii\grid\ActionColumn'],*/
+            //['class' => 'yii\grid\ActionColumn'],
         ];
     */
     ExportMenu::widget([
