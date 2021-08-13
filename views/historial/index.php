@@ -27,6 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
 
 <?= 
+
+/**
+ * 2021-07-27 Added by Batista for Export in Excel.
+ * link: https://www.yiiframework.com/wiki/763/step-by-step-for-how-to-full-export-yii2-grid-to-excel
+ */
+
 // Me tira el error 
 /*
     $gridColumns = [
@@ -75,6 +81,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'class' => 'btn btn-outline-secondary'
         ],
     ]) . "<hr>\n".
+    //2021-07-27 - End of the add by Batista
+
     // Se comenta porque el export ya tiene su propia grid.
     GridView::widget([
         'dataProvider' => $dataProvider,
