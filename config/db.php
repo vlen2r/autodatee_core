@@ -3,6 +3,10 @@
 return [
     'class' => 'yii\db\Connection',
 
+    'attributes' => [
+        // utilizar un tiempo de espera de conexión más pequeña
+        PDO::ATTR_TIMEOUT => 120,
+    ],
 
 //ambiente de prueba 2020 - CPanel autodateetest.siseservicios.com/web
 //    'dsn' => 'mysql:host=localhost;dbname=siseserv_autodateetest',
