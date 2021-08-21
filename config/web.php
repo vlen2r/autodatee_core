@@ -65,7 +65,7 @@ $config = [
                  */
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning', 'debug'],
+                    'levels' => ['error', 'warning'],
                 ],
                 /**
                  * Gestiona los errores y las advertencias y los debug
@@ -74,7 +74,7 @@ $config = [
                  */
                 [
                     'class' => 'yii\log\DbTarget',
-                    'levels' => ['error', 'warning', 'debug'],
+                    'levels' => ['error', 'warning'],
                 ],
                 //End of add by Batista Sebastian 2021-08-21
                 /**
