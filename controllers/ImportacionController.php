@@ -188,6 +188,8 @@ class ImportacionController extends Controller
 
                     $headers = [];
                     
+                    Yii::debug('start procesing each CRMs API information');
+
                     //En caso que estemos en un cliente de Tecnom. REQUIERE USR y PASS 
                     //Este if fue desarrollado por Deoliveira
                     //print_r('urltecnom: '.strpos($cliente['url'], $urltecnom).' ');
@@ -277,12 +279,15 @@ class ImportacionController extends Controller
                     $response = curl_exec($curl);
                     Yii::warning('$response');
                     Yii::warning($response);
+
                     $curl_err = curl_error($curl);
                     Yii::warning('$curl_err');
                     Yii::warning($curl_err);
+
                     $curl_info = curl_getinfo($curl);
                     Yii::warning('$curl_info');
                     Yii::warning($curl_info);
+
                     curl_close($curl);
 
                     $parse_response = json_decode($response, true);
@@ -329,6 +334,7 @@ class ImportacionController extends Controller
                     
                     /**
                      * Detectando si hubo error en Tecnom?????
+                     * Detectando si hubo error en Salesforce también.
                      * {
                      * "Message" : "Ha ocurrido un error al validar la consulta" ,
                      * "ModelState" : {
@@ -355,6 +361,10 @@ class ImportacionController extends Controller
                         Yii::warning('Inconcert Status!=true');
                     }
 
+
+                    /**
+                     * Procesando respuestas erroneas.
+                     */
                     if ($curl_err || $response_success_aux_a == false || $response_success_aux_b == false || $response_success_aux_c == false || $response_success_aux_d == false) 
                     {
                         $error_ls = '';
@@ -491,6 +501,21 @@ class ImportacionController extends Controller
            $id = $response['data']['contactId'];
            Yii::warning('$response[data][contactId]');
            Yii::warning($response['data']['contactId']);
+        }
+
+        /**
+         * SalesForce
+         * http_code = 200
+         * {
+         *      "LeadId": "00Q3i00000FD0XdEAL"
+         * }
+         */
+        Yii::info('Salesforce Comprobando identificador de lead');
+        if (isset($response['LeadId'])) 
+        {
+           $id = $response['LeadId'];
+           Yii::warning('$response[LeadId]');
+           Yii::warning($response['LeadId']);
         }
 
         return $id;

@@ -59,10 +59,42 @@ $config = [
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
+                /**
+                 * Gestiona los errores, las advertencias y los debug 
+                 * y los guarda en un archivo
+                 */
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error', 'warning', 'debug'],
                 ],
+                /**
+                 * Gestiona los errores y las advertencias y los debug
+                 * y las guarda en una tabla de la base de datos.
+                 * Added by Batista Sebastian 2021-08-21.
+                 */
+                [
+                    'class' => 'yii\log\DbTarget',
+                    'levels' => ['error', 'warning', 'debug'],
+                ],
+                //End of add by Batista Sebastian 2021-08-21
+                /**
+                 * Gestiona los mensajes de error 
+                 * de las categorías cuyos nombres empiecen por yii\db\ 
+                 * y los envía por email a las direcciones admin@example.com 
+                 * y developer@example.com.
+                 * Added by Batista Sebastian 2021-08-21.
+                 */
+                [
+                    'class' => 'yii\log\EmailTarget',
+                    'levels' => ['error'],
+                    'categories' => ['yii\db\*'],
+                    'message' => [
+                       'from' => ['log@example.com'],
+                       'to' => ['admin@example.com', 'developer@example.com'],
+                       'subject' => 'Database errors at example.com',
+                    ],
+                ],
+                //End of add by Batista Sebastian 2021-08-21.
             ],
         ],
         'db' => $db,
