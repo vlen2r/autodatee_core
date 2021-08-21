@@ -138,6 +138,9 @@ class ImportacionController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+    /**
+     * Procesa la información del archivo y lo convierte en una estructura a enviar a la API.
+     */
     public function actionProcesar($token = null)
     {
         $model = new ImportacionForm();
@@ -231,10 +234,12 @@ class ImportacionController extends Controller
                         $headers = array
                         (
                             'Content-Type:application/json',
-                            'dealer: YAC',
+                            'dealer: ' . $cliente['token'],
                             'username: ' . $cliente['user'],
                             'password: ' . $cliente['password'],
                         );
+                        Yii::warning('$headers SalesForce');
+                        Yii::warning($headers);
                     }
 
                     //En caso que estemos en un cliente de Inconcert. Buscamos la parte constante de la pagina.
@@ -427,6 +432,9 @@ class ImportacionController extends Controller
         return $this->render('confirmar', ['model' => $model, 'token' => $token, 'provider' => $provider, 'clientes' => $clientes]);
     }
 
+    /**
+     * 
+     */
     private function parseaIdentificadorRespuesta($response)
     {
         /**
@@ -489,8 +497,7 @@ class ImportacionController extends Controller
     }
 
     /**
-     * Lists all Cliente models.
-     * @return mixed
+     * Análisis de archivo excel proporcionado por el usuario.
      */
     public function actionAnalizar()
     {
@@ -586,10 +593,8 @@ class ImportacionController extends Controller
                     ],
                 ]));
 
-
-
+                //Llamamos a la acción PROCESAR con el token asignado a los registros obtenidos del archivo.
                 $this->redirect(array('importacion/procesar', 'token' => $token));
-                //
             }
         }
 

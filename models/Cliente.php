@@ -52,7 +52,7 @@ class Cliente extends \yii\db\ActiveRecord
             'url' => 'Url',
             'user' => 'User',
             'password' => 'Password',
-            'token' => 'Token',
+            'token' => 'Token / Dealer de Salesforce',
             'json' => 'Json - Modelo API'
         ];
     }
