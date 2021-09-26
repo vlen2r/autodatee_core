@@ -162,6 +162,9 @@ class ImportacionController extends Controller
             $cliente = Cliente::find()->where(['id' => $id_cliente])->one();
             $importado = Importacion::find()->where(['token' => $token])->andWhere(['importado' => 0])->all();
 
+            // Actualizamos todos los registros, asignandole el id del cliente
+            Importacion::updateAll(['cliente_id' => $id_cliente], ['and', ['=', 'token', $token], ['=', 'importado', 0]]);
+            
             if ($importado != null) {
                 foreach ($importado as $i) {
 

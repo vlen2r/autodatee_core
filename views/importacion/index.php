@@ -75,6 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'fecha',
             'importado',
             'id_asignado',
+            'clienteNombre',
             /*['class' => 'yii\grid\ActionColumn'],*/
         ],
         'clearBuffers' => true, //optional
@@ -123,6 +124,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'fecha',
             'importado',
             'id_asignado',
+            'clienteNombre',
             /*['class' => 'yii\grid\ActionColumn'],*/
         ],
     ]); ?>

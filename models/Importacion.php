@@ -19,6 +19,8 @@ use Yii;
  * @property string $token
  * @property int $importado
  * @property string $fecha
+ * @property int $cliente_id
+ * @property Cliente $cliente
  */
 class Importacion extends \yii\db\ActiveRecord
 {
@@ -41,6 +43,8 @@ class Importacion extends \yii\db\ActiveRecord
             [['fecha'], 'safe'],
             [['nombre', 'apellido', 'telefono', 'celular', 'direccion', 'email', 'auto', 'observaciones'], 'string', 'max' => 255],
             [['token', 'vendor', 'id_asignado'], 'string', 'max' => 64],
+            [['cliente_id'], 'integer'],
+            [['cliente_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['cliente_id' => 'id']],
         ];
     }
 
@@ -63,6 +67,21 @@ class Importacion extends \yii\db\ActiveRecord
             'importado' => 'Importado',
             'fecha' => 'Fecha',
             'vendor' => 'Vendor',
+            'cliente_id' => 'Cliente ID',
+            'clienteNombre' => Yii::t('app', 'Nombre de Cliente'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCliente()
+    {
+        return $this->hasOne(Cliente::className(), ['id' => 'cliente_id']);
+    }
+
+    public function getClienteNombre()
+    {
+        return $this->cliente->nombre;
     }
 }
