@@ -19,6 +19,7 @@ use ruskid\csvimporter\CSVReader;
 use ruskid\csvimporter\MultipleImportStrategy;
 use yii\data\ArrayDataProvider;
 use yii\helpers\ArrayHelper;
+use yii\base\ErrorException;
 
 /**
  * ImportacionController implements the CRUD actions for Importacion model.
@@ -179,6 +180,7 @@ class ImportacionController extends Controller
                         '{$auto}'           => '"' . $i['auto'] . '"',
                         '{$vendor}'         => '"' . $i['vendor'] . '"',
                         '{$date}'           => '"' . date("Y-m-d\TH:i:s") . '.000000Z' . '"',
+                        '{$code_modelo}' => '"' . $i['code_modelo'] . '"',
                     );
 
                     $curl = curl_init();
@@ -614,6 +616,18 @@ class ImportacionController extends Controller
                             'attribute' => 'importado',
                             'value' => function ($line) {
                                 return 0;
+                            },
+                        ],
+                        [
+                            'attribute' => 'code_modelo',
+                            'value' => function ($line) {
+                                $value = NULL;
+                                try {
+                                    $value = $line[9];
+                                } catch (ErrorException $e) {
+                                    $value = NULL;
+                                }
+                                return $value;
                             },
                         ]
 

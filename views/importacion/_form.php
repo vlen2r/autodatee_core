@@ -32,6 +32,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'importado')->textInput() ?>
 
+    <?= $form->field($model, 'code_modelo')->textInput(['maxlength' => true]) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

@@ -25,6 +25,7 @@ class ImportacionSearch extends Importacion
             [['nombre', 'apellido', 'telefono', 'celular', 'direccion', 'email', 'auto', 'observaciones', 'token'], 'safe'],
             [['cliente_id'], 'integer'],
             [['clienteNombre'], 'safe'],
+            [['code_modelo'], 'safe'],
         ];
     }
 
@@ -82,7 +83,8 @@ class ImportacionSearch extends Importacion
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'auto', $this->auto])
             ->andFilterWhere(['like', 'observaciones', $this->observaciones])
-            ->andFilterWhere(['like', 'token', $this->token]);
+            ->andFilterWhere(['like', 'token', $this->token])
+            ->andFilterWhere(['like', 'code_modelo', $this->code_modelo]);
 
         $query->orderBy(['fecha' => SORT_DESC]);
 

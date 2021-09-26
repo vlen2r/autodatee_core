@@ -21,6 +21,7 @@ use Yii;
  * @property string $fecha
  * @property int $cliente_id
  * @property Cliente $cliente
+ * @property string $code_modelo
  */
 class Importacion extends \yii\db\ActiveRecord
 {
@@ -45,6 +46,7 @@ class Importacion extends \yii\db\ActiveRecord
             [['token', 'vendor', 'id_asignado'], 'string', 'max' => 64],
             [['cliente_id'], 'integer'],
             [['cliente_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::className(), 'targetAttribute' => ['cliente_id' => 'id']],
+            [['code_modelo'], 'string', 'max' => 64],
         ];
     }
 
@@ -69,6 +71,7 @@ class Importacion extends \yii\db\ActiveRecord
             'vendor' => 'Vendor',
             'cliente_id' => 'Cliente ID',
             'clienteNombre' => Yii::t('app', 'Nombre de Cliente'),
+            'code_modelo' => 'Codigo Modelo',
         ];
     }
 

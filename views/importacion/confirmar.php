@@ -46,7 +46,8 @@ $model->token = $token;
                     'email',
                     'auto',
                     'observaciones',
-                    'vendor'
+                    'vendor',
+                    'code_modelo',
                 ],
             ]); ?>
         </div>
