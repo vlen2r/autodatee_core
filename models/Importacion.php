@@ -71,7 +71,7 @@ class Importacion extends \yii\db\ActiveRecord
             'vendor' => 'Vendor',
             'cliente_id' => 'Cliente ID',
             'clienteNombre' => Yii::t('app', 'Nombre de Cliente'),
-            'code_modelo' => 'Codigo Modelo',
+            'code_modelo' => 'Code Modelo',
         ];
     }
 
