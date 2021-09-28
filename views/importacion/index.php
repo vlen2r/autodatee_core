@@ -72,11 +72,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'observaciones',
             //'token',
             'vendor',
+            'clienteNombre',
+            'code_modelo',
             'fecha',
             'importado',
             'id_asignado',
-            'clienteNombre',
-            'code_modelo',
             /*['class' => 'yii\grid\ActionColumn'],*/
         ],
         'clearBuffers' => true, //optional
@@ -122,11 +122,11 @@ $this->params['breadcrumbs'][] = $this->title;
             //'observaciones',
             //'token',
             'vendor',
+            'clienteNombre',
+            'code_modelo',
             'fecha',
             'importado',
             'id_asignado',
-            'clienteNombre',
-            'code_modelo',
             /*['class' => 'yii\grid\ActionColumn'],*/
         ],
     ]); ?>
