@@ -38,6 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'observaciones',
             'token',
             'importado',
+            'cliente_id',
+            'code_modelo',
         ],
     ]) ?>
 
