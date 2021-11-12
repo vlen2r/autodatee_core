@@ -75,7 +75,7 @@ class ImportacionSearch extends Importacion
             'cliente_id' => $this->cliente_id,
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->nombre])
+        $query->andFilterWhere(['like', 'importacion.nombre', $this->nombre])
             ->andFilterWhere(['like', 'apellido', $this->apellido])
             ->andFilterWhere(['like', 'telefono', $this->telefono])
             ->andFilterWhere(['like', 'celular', $this->celular])
