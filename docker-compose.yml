@@ -4,14 +4,14 @@ services:
   php:
     restart: always
     image: yiisoftware/yii2-php:7.1-apache
-    container_name: autodatee_core_yii
+    container_name: autodatee_core_yii_test
     volumes:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
       - ./:/app:delegated
     ports:
-      - 888:80
+      - 555:80
 
-  mysql:
+  mysql_test:
     restart: always
     image: mariadb
     command: --default-authentication-plugin=mysql_native_password
@@ -21,21 +21,21 @@ services:
       MYSQL_PASSWORD: docker
       MYSQL_DATABASE: default_schema
     volumes:
-      - ~/db/mysql-autodatee_core:/var/lib/mysql
+      - ~/db/mysql-autodatee_core_test:/var/lib/mysql
     ports:
-      - 3307:3306
+      - 3308:3306
 
-  phpmyadmin:
+  phpmyadmin_test:
     restart: always
     image: phpmyadmin/phpmyadmin
-    container_name: autodatee_core_phpmyadmin
+    container_name: autodatee_core_phpmyadmin_test
     environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3307
+      PMA_HOST: mysql_test
+      PMA_PORT: 3308
       PMA_ARBITRARY: 1
     ports:
-      - 999:80
+      - 666:80
     links:
-      - mysql
+      - mysql_test
     depends_on:
-      - mysql
+      - mysql_test

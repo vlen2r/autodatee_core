@@ -15,7 +15,7 @@ return [
 //    'charset' => 'utf8',
 
 //ambiente de producción 2021 - AWS IP:888 / IP:999
-    'dsn' => 'mysql:host=mysql;dbname=siseserv_autodatee',
+    'dsn' => 'mysql:host=mysql_test;dbname=siseserv_autodatee',
     'username' => 'docker',
     'password' => 'docker',
     'charset' => 'utf8',
