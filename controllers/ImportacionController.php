@@ -180,7 +180,7 @@ class ImportacionController extends Controller
                         '{$auto}'           => '"' . $i['auto'] . '"',
                         '{$vendor}'         => '"' . $i['vendor'] . '"',
                         '{$date}'           => '"' . date("Y-m-d\TH:i:s") . '.000000Z' . '"',
-                        '{$code_modelo}' => '"' . $i['code_modelo'] . '"',
+                        '{$code_modelo}'    => '"' . $i['code_modelo'] . '"',
                     );
 
                     $curl = curl_init();
@@ -189,6 +189,7 @@ class ImportacionController extends Controller
                     $urlpilot = "pilotsolution.com.ar";
                     $urltecnom = "tecnomcrm.com";
                     $urlsalesforce = "9201";
+                    $urlsalesforcetagle = "grupotagle.com.ar";
                     $urlinconcert = "inconcertcc.com";
 
                     $headers = [];
@@ -246,6 +247,20 @@ class ImportacionController extends Controller
                             'password: ' . $cliente['password'],
                         );
                         Yii::warning('$headers SalesForce');
+                        Yii::warning($headers);
+                    }
+
+                    //En caso que estemos en un cliente de Salesforce. Particularmente Grupo Tagle 
+                    //print_r('urlsalesforcetagle: '.strpos($cliente['url'], $urlsalesforcetagle).' ');
+                    if ($cliente['user'] != '' && strpos($cliente['url'], $urlsalesforcetagle)>=1) 
+                    {
+                        //print_r(' entro en urlsalesforcetagle');
+                        $headers = array
+                        (
+                            'Content-Type:application/json',
+                            'x-api-key: ' . $cliente['token'],
+                        );
+                        Yii::warning('$headers SalesForceTagle');
                         Yii::warning($headers);
                     }
 
