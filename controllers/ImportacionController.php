@@ -422,7 +422,15 @@ class ImportacionController extends Controller
                             $error_ls .= $parse_response['message'].' ';
                             if(isset($parse_response['data']))
                             {
-                                $error_ls .= $parse_response['data'].' ';
+                                // Dado que la estructura del retorno es diferente para urlsalesforcetagle, se debe procesar de manera diferente.
+                                if(strpos($cliente['url'], $urlsalesforcetagle)>=1)
+                                {
+                                    $error_ls .= $parse_response['data']['errors'][0]['message'].' ';
+                                }
+                                else
+                                {
+                                    $error_ls .= $parse_response['data'].' ';
+                                }
                             }
                         } 
                         /**
