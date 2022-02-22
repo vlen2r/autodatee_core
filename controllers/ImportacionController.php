@@ -252,7 +252,7 @@ class ImportacionController extends Controller
 
                     //En caso que estemos en un cliente de Salesforce. Particularmente Grupo Tagle 
                     //print_r('urlsalesforcetagle: '.strpos($cliente['url'], $urlsalesforcetagle).' ');
-                    if ($cliente['user'] != '' && strpos($cliente['url'], $urlsalesforcetagle)>=1) 
+                    if (strpos($cliente['url'], $urlsalesforcetagle)>=1) 
                     {
                         //print_r(' entro en urlsalesforcetagle');
                         $headers = array
