@@ -538,6 +538,11 @@ class ImportacionController extends Controller
            Yii::warning($response['LeadId']);
         }
 
+        // SalesForce - Tagle
+        if(isset($response['data']['id'])){
+            $id = $response['data']['id'];
+        }
+
         return $id;
     }
 
