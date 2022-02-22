@@ -546,6 +546,19 @@ class ImportacionController extends Controller
            Yii::warning($response['LeadId']);
         }
 
+        /**
+         * {
+         *   "code": 200,
+         *   "data": {
+         *       "id": "00Q03000008dGneEAE",
+         *       "success": true,
+         *       "errors": []
+         *   },
+         *   "message": "Finalizado"
+         *}
+        */
+
+
         // SalesForce - Tagle
         if(isset($response['data']['id'])){
             $id = $response['data']['id'];
