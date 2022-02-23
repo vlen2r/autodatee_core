@@ -371,13 +371,35 @@ class ImportacionController extends Controller
                     }
 
                     /**
+                     * Detectando si hubo error en SalesForce Grupo Tagle.
+                     * {
+                     *      "code": 400,
+                     *      "data": {
+                     *           "success": false,
+                     *          "errors": [
+                     *              {
+                     *                  "code": "VALIDATION_ERROR",
+                     *                  "message": "Los parámetros 'modelo_de_interes_desc' y 'modelo_de_interes' están vacíos; uno de los dos debe incluir datos ya que el campo de 'Modelo' es obligatorio."
+                     *              }
+                     *          ]
+                     *      },
+                     * "message": "Finalizado con error"
+                     * }
+                     */
+                    $response_success_aux_d = true;
+                    if(isset($curl_info['http_code']) && $curl_info['http_code']!=200)
+                    {
+                        $response_success_aux_d = false;
+                    }
+
+                    /**
                      * Detectando si hubo error en Inconcert!
                      * Status=false, Description= mensaje de error y erro=repite error.
                      */
-                    $response_success_aux_d = true;
+                    $response_success_aux_e = true;
                     if (isset($curl_info['Status']) && $curl_info['Status']!='true')
                     {
-                        $response_success_aux_d = false;
+                        $response_success_aux_e = false;
                         Yii::warning('Inconcert Status!=true');
                     }
 
@@ -385,7 +407,7 @@ class ImportacionController extends Controller
                     /**
                      * Procesando respuestas erroneas.
                      */
-                    if ($curl_err || $response_success_aux_a == false || $response_success_aux_b == false || $response_success_aux_c == false || $response_success_aux_d == false) 
+                    if ($curl_err || $response_success_aux_a == false || $response_success_aux_b == false || $response_success_aux_c == false || $response_success_aux_d == false || $response_success_aux_e == false) 
                     {
                         $error_ls = '';
                         
@@ -422,7 +444,15 @@ class ImportacionController extends Controller
                             $error_ls .= $parse_response['message'].' ';
                             if(isset($parse_response['data']))
                             {
-                                $error_ls .= $parse_response['data'].' ';
+                                // Dado que la estructura del retorno es diferente para urlsalesforcetagle, se debe procesar de manera diferente.
+                                if(strpos($cliente['url'], $urlsalesforcetagle)>=1)
+                                {
+                                    $error_ls .= $parse_response['data']['errors'][0]['message'].' ';
+                                }
+                                else
+                                {
+                                    $error_ls .= $parse_response['data'].' ';
+                                }
                             }
                         } 
                         /**
@@ -539,6 +569,17 @@ class ImportacionController extends Controller
         }
 
         // SalesForce - Tagle
+        /**
+         * {
+         *   "code": 200,
+         *   "data": {
+         *       "id": "00Q03000008dGneEAE",
+         *       "success": true,
+         *       "errors": []
+         *   },
+         *   "message": "Finalizado"
+         *}
+        */
         if(isset($response['data']['id'])){
             $id = $response['data']['id'];
         }
